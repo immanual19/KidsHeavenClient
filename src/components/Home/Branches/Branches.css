@@ -1,0 +1,13 @@
+.outlet-container{
+    display: grid;
+    margin-left: 5%;
+    grid-template-columns: repeat(3,1fr);
+}
+
+@media screen and (max-width:760px) {
+    .outlet-container{
+        display: grid;
+        margin-left: 16%;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
