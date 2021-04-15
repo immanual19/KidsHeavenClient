@@ -14,7 +14,7 @@ const PremiumService = () => {
         <h1>Our Premium Services</h1>
         <section className="premium-service-container">
         {
-            premiumService.map(service=><PremiumServiceCard service={service}></PremiumServiceCard>)
+            premiumService.map(service=><PremiumServiceCard key={premiumService._id} service={service}></PremiumServiceCard>)
         }
         </section>
         </div>

@@ -49,7 +49,7 @@ const PremiumServiceCard = (props) => {
           </CardContent>
         </CardActionArea>
         <CardActions style={{justifyContent: 'center'}}>
-        <Link to={`/manage/${_id}`}><Button variant="contained" color="secondary">Buy Now</Button></Link>
+        <Link to={`/manage/premium/${_id}`}><Button variant="contained" color="secondary">Buy Now</Button></Link>
         </CardActions>
       </Card>
         </div>

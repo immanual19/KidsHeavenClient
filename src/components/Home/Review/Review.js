@@ -13,7 +13,7 @@ const Review = () => {
         <h1>Testimonials</h1>
         <section className="review-card-container">
             {
-                reviews.map(review=><ReviewCard review={review}></ReviewCard>)
+                reviews.map(review=><ReviewCard key={review._id} review={review}></ReviewCard>)
             }
         </section>
         </div>

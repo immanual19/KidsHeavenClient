@@ -30,7 +30,7 @@ function App() {
     <Route path="/login">
     <Login></Login>
     </Route>
-    <PrivateRoute path="/manage/:id">
+    <PrivateRoute path="/manage/:serviceType/:serviceId">
     <Manage></Manage>
     </PrivateRoute>
   </Switch>

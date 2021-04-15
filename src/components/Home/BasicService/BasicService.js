@@ -15,7 +15,7 @@ const BasicService = () => {
         <h1>Our Basic Services</h1>
         <section className="basic-service-container">
         {
-            basicService.map(service=><BasicServiceCard service={service}></BasicServiceCard>)
+            basicService.map(service=><BasicServiceCard key={service._id} service={service}></BasicServiceCard>)
         }
         </section>
         </div>
