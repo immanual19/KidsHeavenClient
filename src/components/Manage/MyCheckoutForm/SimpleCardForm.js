@@ -64,6 +64,17 @@ const SimpleCardForm = () => {
         const paymentInfo=JSON.parse(localStorage.getItem('paymentInfo'));
         paymentInfo.cardInfo=paymentMethod;
         localStorage.setItem('paymentInfo',JSON.stringify(paymentInfo));
+
+        fetch('http://localhost:8080/postPaymentInfo',{
+            method: 'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify(paymentInfo)
+        })
+        .then(response=>response.json())
+        .then(data=>{
+          console.log(data);
+        })
+
     }
     
   };
@@ -131,6 +142,12 @@ const SimpleCardForm = () => {
       <Button type="submit" disabled={!stripe} variant="contained" color="secondary">
   Pay
 </Button>
+{
+  paymentError && <p>{paymentError}</p>
+}
+{
+  paymentSuccess && <p>Payment Successfully Done</p>
+}
       <br/>
     </form>
   );
