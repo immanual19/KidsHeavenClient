@@ -51,7 +51,7 @@ const Login = () => {
 
     function fetchAdminInfo(email){
    
-            fetch('http://localhost:8080/isAdmin',{
+            fetch('https://tranquil-citadel-82136.herokuapp.com/isAdmin',{
                 method: 'POST',
                 headers:{
                     'Content-Type':'application/json'

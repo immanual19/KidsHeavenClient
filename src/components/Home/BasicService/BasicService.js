@@ -6,10 +6,10 @@ const BasicService = () => {
     const [basicService,setBasicService]=useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/getBasicService')
+        fetch('https://tranquil-citadel-82136.herokuapp.com/getBasicService')
         .then(response=>response.json())
         .then(data=>setBasicService(data))
-    },[])
+    },[basicService])
     return (
         <div className="my-5">
         <h1>Our Basic Services</h1>
