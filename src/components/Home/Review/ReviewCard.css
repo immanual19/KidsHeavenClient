@@ -1,0 +1,6 @@
+.review-card{
+    width: 90%;
+    border: 1px solid lightgray;
+    box-shadow: 5px 10px 5px lightgray;
+    border-radius: 10px;
+}

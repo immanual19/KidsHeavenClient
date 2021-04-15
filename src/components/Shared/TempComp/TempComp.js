@@ -45,10 +45,6 @@ const Branches = () => {
                     <input ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Name" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Age Group</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="ageGroup" placeholder="Enter Age Group" />
-                </div>
-                <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Validity</label>
                     <input ref={register({ required: true })} type="text" className="form-control" name="validity" placeholder="Enter Validity" />
                 </div>

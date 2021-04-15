@@ -3,11 +3,17 @@ import firebase from '../../../../node_modules/firebase';
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { useHistory, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import './Login.css';
 if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   }
 const Login = () => {
     let loggedInUserInfo={};
+    const history=useHistory();
+    const location=useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
     const handleGoogleSignIn=()=>{
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
@@ -26,8 +32,10 @@ const Login = () => {
             loggedInUserInfo.email=user.email;
             loggedInUserInfo.photo=user.photoURL;
             loggedInUserInfo.token=token;
+            loggedInUserInfo.isSignedIn=true;
             localStorage.setItem('userInfo',JSON.stringify(loggedInUserInfo));
            // console.log('Logged In User Info: ',loggedInUserInfo);
+           history.replace(from);
             // ...
         }).catch((error) => {
             // Handle Errors here.
@@ -58,8 +66,10 @@ const Login = () => {
             })
     }
     return (
-        <div>
-            <button onClick={handleGoogleSignIn}>Google</button>
+        <div className="login-page">
+        <h1>Welcome to, KidsHeaven</h1>
+        <p>Login is now More simple than ever</p>
+        <p onClick={handleGoogleSignIn} className="SignInWithGoogle"><FontAwesomeIcon icon={faGoogle} /> Sign in with Google</p>
         </div>
     );
 };

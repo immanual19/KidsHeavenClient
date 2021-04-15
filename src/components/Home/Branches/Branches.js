@@ -24,7 +24,7 @@ const outlets=[
 const Branches = () => {
     return (
         <div>
-        <h1>Our OutLets</h1>
+        <h1>Our Branches</h1>
         <section className="outlet-container">
         {
             outlets.map(outlet=><OutletCard outlet={outlet}></OutletCard>)

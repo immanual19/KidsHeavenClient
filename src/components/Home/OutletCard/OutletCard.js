@@ -17,11 +17,10 @@ const useStyles = makeStyles({
   });
   
 const OutletCard = (props) => {
-  console.log(props);
   const {name,address,image}=props.outlet;
     const classes = useStyles();
     return (
-        <div>
+        <div className="my-2">
         <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
