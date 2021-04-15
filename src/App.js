@@ -10,6 +10,8 @@ import Home from './components/Home/Home/Home';
 import Login from './components/Login/Login/Login';
 import Manage from './components/Manage/Manage/Manage';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
+
+
 function App() {
 
 
@@ -30,7 +32,10 @@ function App() {
     <Route path="/login">
     <Login></Login>
     </Route>
-    <PrivateRoute path="/manage/:serviceType/:serviceId">
+    <PrivateRoute path="/manage/:serviceId">
+    <Manage></Manage>
+    </PrivateRoute>
+    <PrivateRoute path="/manage">
     <Manage></Manage>
     </PrivateRoute>
   </Switch>

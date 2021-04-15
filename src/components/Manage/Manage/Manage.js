@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -26,6 +26,9 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddBasicService from '../AddBasicService/AddBasicService';
 import AddPremiumService from '../AddPremiumService/AddPremiumService';
 import Book from '../Book/Book';
+import OrderList from '../OrderList/OrderList';
+import PostReview from '../PostReview/PostReview';
+import BookingList from '../BookingList/BookingList';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -72,44 +75,97 @@ interface Props {
 }
 
 function Manage(props) {
+
+  const userInfo=JSON.parse(localStorage.getItem('userInfo'));
+  const email=userInfo.email;
+
+  const [admin,isAdmin]=useState(false);
+
+  useEffect(()=>{
+    fetch('http://localhost:8080/isAdmin',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      if(data){
+        isAdmin(data);
+      }
+    })
+  },[admin])
+
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
   const {serviceId}=useParams();
-  const {serviceType}=useParams();
   //console.log('id=',serviceId, 'type=',serviceType);
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [makeAdminVisible,setMakeAdminVisible]=useState(false);
-  const [addBasicServiceVisible,setAddBasicServiceVisible]=useState(false);
-  const [addPremiumServiceVisible,setAddPremiumServiceVisible]=useState(false);
+
+  //Starts Here
   const [bookingVisible,setBookingVisible]=useState(true);
+  const [bookingListVisible,setBookingListVisible]=useState(false);
+  const [reviewVisible,setReviewVisible]=useState(false);
+  const [orderListVisible,setOrderListVisible]=useState(true);
+  const [makeAdminVisible,setMakeAdminVisible]=useState(false);
+  const [addBasicVisible,setAddBasicVisible]=useState(false);
+  const [addPremiumVisible,setAddPremiumVisible]=useState(false);
+  //Ends Here
   const handleClick=(text)=>{
       console.log('Clicked',text);
       if(text==='Make Admin'){
           setMakeAdminVisible(true);
-          setAddBasicServiceVisible(false);
-          setAddPremiumServiceVisible(false);
-          setBookingVisible(false);
+          setOrderListVisible(false);
+          setAddBasicVisible(false);
+          setAddPremiumVisible(false);
       }
       else if(text==='Add Basic Service'){
-        setAddBasicServiceVisible(true);
-        setAddPremiumServiceVisible(false);
+        setAddBasicVisible(true);
         setMakeAdminVisible(false);
-        setBookingVisible(false);
+        setOrderListVisible(false);
+        setAddPremiumVisible(false);
       }
       else if(text==='Add Premium Service'){
-        setAddPremiumServiceVisible(true);
-        setAddBasicServiceVisible(false);
+        setAddPremiumVisible(true);
+        setAddBasicVisible(false);
         setMakeAdminVisible(false);
-        setBookingVisible(false);
+        setOrderListVisible(false);
+        
+      }
+      else if(text==='Order list'){
+        setOrderListVisible(true);
+        setAddPremiumVisible(false);
+        setAddBasicVisible(false);
+        setMakeAdminVisible(false);
+        
       }
       else if(text==='Book'){
         setBookingVisible(true);
-        setAddBasicServiceVisible(false);
-        setAddPremiumServiceVisible(false);
-        setMakeAdminVisible(false);
+        setBookingListVisible(false);
+        setReviewVisible(false);
+      }
+      else if(text==='Booking List'){
+        setBookingListVisible(true);
+        setBookingVisible(false);
+        setReviewVisible(false);
+      } 
+      else if(text==='Review'){
+        setReviewVisible(true);
+        setBookingListVisible(false);
+        setBookingVisible(false);
       }
   }
+
+  const [list,setList]=useState([]);
+
+  useEffect(()=>{
+    fetch('http://localhost:8080/getAllOrder')
+    .then(res=>res.json())
+    .then(data=>{
+      setList(data);
+    })
+  },[])
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -119,6 +175,9 @@ function Manage(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
+
+      {
+       admin && <List>
         {['Order list', 'Add Basic Service'].map((text, index) => (
           <ListItem  onClick={()=>handleClick(text)} button key={text}>
 
@@ -127,24 +186,39 @@ function Manage(props) {
           </ListItem>
         ))}
 
-        {['Add Premium Service', 'Make Admin'].map((text, index) => (
+
+          {['Add Premium Service', 'Make Admin'].map((text, index) => (
             <ListItem  onClick={()=>handleClick(text)}  button key={text}>
               <ListItemIcon>{index%2==0 ? <PlusOneIcon/> : <PersonAddIcon/> }</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
-          {['Book', 'Booking List'].map((text, index) => (
-            <ListItem  onClick={()=>handleClick(text)}  button key={text}>
-              <ListItemIcon>{index===0 % 2 === 0 ? <ShoppingCartIcon/> : <ViewListIcon/> }</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-          {['Review'].map((text, index) => (
-            <ListItem  onClick={()=>handleClick(text)}  button key={text}>
-              <ListItemIcon><RateReviewIcon/></ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+        </List>
+      }
+
+   {
+    !admin && <List>
+    
+    { ['Book', 'Booking List'].map((text, index) => (
+      <ListItem  onClick={()=>handleClick(text)}  button key={text}>
+        <ListItemIcon>{index===0 % 2 === 0 ? <ShoppingCartIcon/> : <ViewListIcon/> }</ListItemIcon>
+        <ListItemText primary={text} />
+      </ListItem>
+    ))}
+
+    {['Review'].map((text, index) => (
+      <ListItem  onClick={()=>handleClick(text)}  button key={text}>
+        <ListItemIcon><RateReviewIcon/></ListItemIcon>
+        <ListItemText primary={text} />
+      </ListItem>
+    ))}
+    </List>
+   }
+
+        
+
+        
+          
       </List>
       
       <Divider />
@@ -210,16 +284,25 @@ function Manage(props) {
         <div className={classes.toolbar} />
         <div>
         {
-          bookingVisible && <Book serviceId={serviceId} serviceType={serviceType}></Book>
+          !admin &&  bookingVisible && <Book serviceId={serviceId}></Book>
+        }
+        {
+          bookingListVisible && <BookingList></BookingList>
         }
         {
            makeAdminVisible && <MakeAdmin></MakeAdmin>
         }
         {
-            addBasicServiceVisible && <AddBasicService></AddBasicService>
+            addBasicVisible && <AddBasicService></AddBasicService>
         }
         {
-            addPremiumServiceVisible && <AddPremiumService></AddPremiumService>
+          addPremiumVisible && <AddPremiumService></AddPremiumService>
+        }
+        {
+          admin && orderListVisible && <OrderList orderlist={list}></OrderList>
+        }
+        {
+          reviewVisible && <PostReview></PostReview>
         }
         </div>
       </main>

@@ -35,7 +35,10 @@ const Login = () => {
             loggedInUserInfo.isSignedIn=true;
             localStorage.setItem('userInfo',JSON.stringify(loggedInUserInfo));
            // console.log('Logged In User Info: ',loggedInUserInfo);
+           
            history.replace(from);
+           window.location.reload();
+           
             // ...
         }).catch((error) => {
             // Handle Errors here.

@@ -23,9 +23,10 @@ const Navbar = () => {
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Admin</a>
-              </li>
+              <Link to="/manage"><li class="nav-item">
+              <a class="nav-link" href="#">Admin</a>
+            </li></Link>
+              
               <Link to="login"><button type="button" class="btn btn-primary">Login</button></Link>
             </ul>
           </div>

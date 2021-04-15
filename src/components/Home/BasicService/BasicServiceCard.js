@@ -46,7 +46,7 @@ const BasicServiceCard = (props) => {
           </CardContent>
         </CardActionArea>
         <CardActions style={{justifyContent: 'center'}}>
-        <Link to={`/manage/basic/${_id}`}><Button variant="contained" color="secondary">Buy Now</Button></Link>
+        <Link to={`/manage/${_id}`}><Button variant="contained" color="secondary">Buy Now</Button></Link>
         </CardActions>
       </Card>
         </div>

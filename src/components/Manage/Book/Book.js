@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 const Book = (props) => {
     
-    console.log(props.serviceId, props.serviceType);
+
     const id=props.serviceId;
     let paymentInformations={};
+
     const [singleService,setSingleService]=useState([]);
     const userInfo=JSON.parse(localStorage.getItem('userInfo'));
     useEffect(()=>{
@@ -15,11 +16,12 @@ const Book = (props) => {
         })
         .then(response=>response.json())
         .then(data=>{
-            console.log('All Services are: ',data);
-            console.log('Length is: ',data.length);
+
             setSingleService(data[0]);
         })
     },[])
+
+
     paymentInformations.userName=userInfo.name;
     paymentInformations.userEmail=userInfo.email;
     paymentInformations.serviceName=singleService.name;
@@ -33,11 +35,11 @@ const Book = (props) => {
         <form>
                 <div className="form-group">
                     <label htmlFor="name">User Name</label>
-                    <input type="text" className="form-control" name="name" placeholder="User Name"/>
+                    <input type="text" className="form-control" name="name" placeholder="User Name" value={userInfo.name} readOnly/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">User Email</label>
-                    <input type="text" className="form-control" name="email" placeholder="User Email"/>
+                    <input type="text" className="form-control" name="email" placeholder="User Email" value={userInfo.email} readOnly/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="serviceName">Service name</label>

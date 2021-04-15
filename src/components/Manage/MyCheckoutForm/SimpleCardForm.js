@@ -63,6 +63,7 @@ const SimpleCardForm = () => {
         setPaymentError(null);
         const paymentInfo=JSON.parse(localStorage.getItem('paymentInfo'));
         paymentInfo.cardInfo=paymentMethod;
+        paymentInfo.date=new Date().toDateString();
         localStorage.setItem('paymentInfo',JSON.stringify(paymentInfo));
 
         fetch('http://localhost:8080/postPaymentInfo',{
@@ -72,7 +73,7 @@ const SimpleCardForm = () => {
         })
         .then(response=>response.json())
         .then(data=>{
-          console.log(data);
+          console.log(data)
         })
 
     }
