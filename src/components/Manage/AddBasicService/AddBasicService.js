@@ -18,7 +18,18 @@ const AddBasicService = () => {
             body: JSON.stringify(serviceInfo)
         })
         .then(response=>response.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            if(data){
+                alert('Basic Service Added Successfully');
+                document.getElementById('name').value='';
+                document.getElementById('price').value='';
+                document.getElementById('validity').value='';
+                document.getElementById('image').value=null;
+            }
+            else{
+                alert('Error. Basic Service Could not be added');
+            }
+        })
     }
     const handleImageUpload=event=>{
     
@@ -42,22 +53,22 @@ const AddBasicService = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Name</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Name" />
+                    <input id="name" ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Name" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Validity</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="validity" placeholder="Enter Validity" />
+                    <input id="validity" ref={register({ required: true })} type="text" className="form-control" name="validity" placeholder="Enter Validity" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Price</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="price" placeholder="Enter Price" />
+                    <input id="price" ref={register({ required: true })} type="text" className="form-control" name="price" placeholder="Enter Price" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Upload a image</label>
-                    <input onChange={handleImageUpload} type="file" className="form-control" id="exampleInputPassword1" placeholder="Picture" />
+                    <input id="image" onChange={handleImageUpload} type="file" className="form-control" placeholder="Picture" />
                 </div>
                 {
-                    isImageUploaded && <button type="submit" className="btn btn-primary">Submit</button>
+                    isImageUploaded?<button type="submit" className="btn btn-primary">Submit</button>:<button type="submit" className="btn btn-primary" disabled>Please Wait</button>
                 }
             </form>
         </div>

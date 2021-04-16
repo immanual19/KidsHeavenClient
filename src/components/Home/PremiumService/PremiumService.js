@@ -10,7 +10,7 @@ const PremiumService = () => {
         .then(data=>setPremiumService(data))
     },[])
 
-    localStorage.setItem('premiumServices',JSON.stringify(premiumService));
+   
 
     return (
         <div className="my-5">

@@ -19,7 +19,6 @@ const Home = () => {
             <Documentary></Documentary>
             <ContactForm></ContactForm>
             <Footer></Footer>
-            <TempComp></TempComp>
         </div>
     );
 };

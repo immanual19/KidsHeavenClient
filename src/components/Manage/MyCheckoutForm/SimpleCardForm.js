@@ -73,7 +73,13 @@ const SimpleCardForm = () => {
         })
         .then(response=>response.json())
         .then(data=>{
-          console.log(data)
+          if(data){
+            alert('Payment Done Successfully');
+            window.location.reload();
+          }
+          else{
+            alert('Error. Payment Could not be done');
+          }
         })
 
     }

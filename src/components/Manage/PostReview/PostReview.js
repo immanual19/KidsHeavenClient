@@ -16,7 +16,17 @@ const PostReview = () => {
             body: JSON.stringify(reviewInfo)
         })
         .then(response=>response.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            if(data){
+                alert('Review posted successfully');
+                document.getElementById('name').value='';
+                document.getElementById('rating').value='';
+                document.getElementById('description').value='';
+            }
+            else{
+                alert('Error. Review could not be posted');
+            }
+        })
     }
 
     return (
@@ -27,15 +37,15 @@ const PostReview = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Name</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Name"/>
+                    <input id="name" ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Name"/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Rating out of 10</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="rating" placeholder="Rating" />
+                    <input id="rating" ref={register({ required: true })} type="text" className="form-control" name="rating" placeholder="Rating" />
                 </div>
                 <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Short Description</label>
-                <textarea ref={register({ required: true })} type="text" className="form-control" name="description" placeholder="Description" >
+                <textarea id="description" ref={register({ required: true })} type="text" className="form-control" name="description" placeholder="Description" >
                 </textarea>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>

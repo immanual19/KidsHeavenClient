@@ -13,7 +13,7 @@ const MakeAdmin = () => {
                 .then(response=>response.json())
                 .then(data=>{
                     if(data){
-                        alert(email,' is successfully added to admin panel');
+                        alert('Admin added successfully');
                         document.getElementById('email-field').value="";
                     }
                 })

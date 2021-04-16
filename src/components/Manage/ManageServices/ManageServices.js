@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -41,15 +41,58 @@ const useStyles = makeStyles({
 
 export default function ManageServices() {
   const classes = useStyles();
-  const basicServices=JSON.parse(localStorage.getItem('basicServices'));
-  const premiumServices=JSON.parse(localStorage.getItem('premiumServices'));
+  // const basicServices=JSON.parse(localStorage.getItem('basicServices'));
+  // const premiumServices=JSON.parse(localStorage.getItem('premiumServices'));
+
+  const [basicServices,setBasicServices]=useState([]);
+  const [premiumServices,setPremiumServices]=useState([]);
+
+  useEffect(()=>{
+    fetch('http://localhost:8080/getBasicService')
+    .then(res=>res.json())
+    .then(data=>setBasicServices(data))
+  },[])
+
+  useEffect(()=>{
+    fetch('http://localhost:8080/getPremiumService')
+    .then(res=>res.json())
+    .then(data=>setPremiumServices(data))
+  },[])
 
   const handleClickBasic=(id)=>{
-      console.log(id);
+      fetch('http://localhost:8080/deleteBasicService',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({id})
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        if(data){
+          alert('Basic Service Deleted Successfully');
+          window.location.reload();
+        }
+        else{
+          alert('Error. Basic Service could not be deleted.');
+        }
+      })
   }
 
   const handleClickPremium=(id)=>{
-      console.log(id);
+      fetch('http://localhost:8080/deletePremiumService',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({id})
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        if(data){
+          alert('Premium Service Deleted Successfully');
+          window.location.reload();
+        }
+        else{
+          alert('Error. Premium Service could not be deleted.');
+        }
+      })
   }
   return (
     <TableContainer component={Paper}>

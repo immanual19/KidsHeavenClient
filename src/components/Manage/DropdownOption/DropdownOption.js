@@ -55,10 +55,11 @@ export default function DropdownOption({list}) {
       .then(res=>res.json())
       .then(data=>{
           if(data){
-              alert('Modified');
+              alert('Order status updated.');
+              window.location.reload();
           }
           else{
-              alert('Not Modified');
+              alert("Error. Order status couldn't be updated");
           }
       })
 

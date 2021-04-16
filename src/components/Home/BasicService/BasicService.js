@@ -11,7 +11,7 @@ const BasicService = () => {
         .then(data=>setBasicService(data))
     },[])
 
-    localStorage.setItem('basicServices',JSON.stringify(basicService));
+
     return (
         <div className="my-5">
         <h1>Our Basic Services</h1>
