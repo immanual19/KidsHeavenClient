@@ -1,7 +1,6 @@
 import React from 'react';
 import Branches from '../Branches/Branches';
 import Header from '../Header/Header';
-import TempComp from '../../Shared/TempComp/TempComp';
 import BasicService from '../BasicService/BasicService';
 import PremiumService from '../PremiumService/PremiumService';
 import Footer from '../../Shared/Footer/Footer';
