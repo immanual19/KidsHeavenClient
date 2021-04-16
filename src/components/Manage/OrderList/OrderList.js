@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
+import DropdownOption from '../DropdownOption/DropdownOption';
 
 const useStyles = makeStyles({
   table: {
@@ -29,6 +30,7 @@ export default function OrderList({orderlist}) {
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Package</TableCell>
             <TableCell align="right">Date Ordered</TableCell>
+            <TableCell align="right">Payed With</TableCell>
             <TableCell align="right">Status</TableCell>
           </TableRow>
         </TableHead>
@@ -41,7 +43,8 @@ export default function OrderList({orderlist}) {
               <TableCell align="right">{list.userEmail}</TableCell>
               <TableCell align="right">{list.serviceName}</TableCell>
               <TableCell align="right">{list.date}</TableCell>
-              <TableCell align="right"><Button variant="contained">Pending</Button><Button variant="contained">On Going</Button><Button variant="contained">Done</Button></TableCell>
+              <TableCell align="right">{list.cardInfo.card.brand}</TableCell>
+              <TableCell align="right"><DropdownOption list={list} key={list._id}></DropdownOption></TableCell>
             </TableRow>
           ))}
         </TableBody>
