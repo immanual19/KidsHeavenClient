@@ -25,6 +25,7 @@ const PremiumServiceCard = (props) => {
     const classes = useStyles();
     const {ageGroup,imageURL,name,price,validity,_id}=props.service;
     return (
+       
         <div>
         <Card className={classes.root}>
         <CardActionArea>
@@ -53,6 +54,7 @@ const PremiumServiceCard = (props) => {
         </CardActions>
       </Card>
         </div>
+       
     );
 };
 
