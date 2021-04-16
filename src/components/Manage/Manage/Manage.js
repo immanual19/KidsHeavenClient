@@ -31,6 +31,8 @@ import PostReview from '../PostReview/PostReview';
 import BookingList from '../BookingList/BookingList';
 import LineStyleIcon from '@material-ui/icons/LineStyle';
 import ManageServices from '../ManageServices/ManageServices';
+import AddBranch from '../AddBranch/AddBranch';
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -125,15 +127,20 @@ function Manage(props) {
   const [addBasicVisible,setAddBasicVisible]=useState(false);
   const [addPremiumVisible,setAddPremiumVisible]=useState(false);
   const [manageAllVisible,setManageAllVisible]=useState(false);
+  const [addBranchVisible,setAddBranchVisible]=useState(false);
+  const [adminHeaderText,setAdminHeaderText]=useState('Order List');
+  const [userHeaderText,setUserHeaderText]=useState('Book Now');
   //Ends Here
   const handleClick=(text)=>{
-      console.log('Clicked',text);
+
       if(text==='Make Admin'){
           setMakeAdminVisible(true);
           setOrderListVisible(false);
           setAddBasicVisible(false);
           setAddPremiumVisible(false);
           setManageAllVisible(false);
+          setAddBranchVisible(false);
+          setAdminHeaderText('Make Admin');
       }
       else if(text==='Add Basic Service'){
         setAddBasicVisible(true);
@@ -141,6 +148,8 @@ function Manage(props) {
         setOrderListVisible(false);
         setAddPremiumVisible(false);
         setManageAllVisible(false);
+        setAddBranchVisible(false);
+        setAdminHeaderText('Add Basic Service');
       }
       else if(text==='Add Premium Service'){
         setAddPremiumVisible(true);
@@ -148,37 +157,61 @@ function Manage(props) {
         setMakeAdminVisible(false);
         setOrderListVisible(false);
         setManageAllVisible(false);
+        setAddBranchVisible(false);
+        setAdminHeaderText('Add Premium Service');
         
       }
-      else if(text==='Order list'){
+      else if(text==='Order List'){
         setOrderListVisible(true);
         setAddPremiumVisible(false);
         setAddBasicVisible(false);
         setMakeAdminVisible(false);
         setManageAllVisible(false);
+        setAddBranchVisible(false);
+        setAdminHeaderText('Order List');
         
       }
-      else if(text==='Book'){
+      else if(text==='Book Now'){
         setBookingVisible(true);
         setBookingListVisible(false);
         setReviewVisible(false);
+        setUserHeaderText('Book Now');
+        
       }
       else if(text==='Booking List'){
         setBookingListVisible(true);
         setBookingVisible(false);
         setReviewVisible(false);
+        setUserHeaderText('Booking List');
+        
       } 
       else if(text==='Review'){
         setReviewVisible(true);
         setBookingListVisible(false);
         setBookingVisible(false);
+        setUserHeaderText('Review');
+        
       }
-      else if(text=='Manage'){
+      else if(text==='Manage'){
         setManageAllVisible(true);
         setOrderListVisible(false);
         setAddPremiumVisible(false);
         setAddBasicVisible(false);
         setMakeAdminVisible(false);
+        setAddBranchVisible(false);
+        setAdminHeaderText('Manage');
+      }
+      else if(text==='Add A Branch'){
+        setAddBranchVisible(true);
+        setManageAllVisible(false);
+        setOrderListVisible(false);
+        setAddPremiumVisible(false);
+        setAddBasicVisible(false);
+        setMakeAdminVisible(false);
+        setAdminHeaderText('Add A Branch');
+      }
+      else{
+        
       }
   }
 
@@ -201,13 +234,15 @@ function Manage(props) {
 
   const drawer = (
     <div>
+    <Link to="/"><h3 style={{color:'goldenrod'}}>Kids Heaven</h3></Link>
       <div className={classes.toolbar} />
+      
       <Divider />
       <List>
 
       {
        admin && <List>
-        {['Order list', 'Add Basic Service'].map((text, index) => (
+        {['Order List', 'Add Basic Service'].map((text, index) => (
           <ListItem  onClick={()=>handleClick(text)} button key={text}>
 
             <ListItemIcon>{index%2==0 ? <ListIcon/> : <PlusOneIcon/> }</ListItemIcon>
@@ -215,16 +250,16 @@ function Manage(props) {
           </ListItem>
         ))}
 
+        {['Add Premium Service', 'Add A Branch'].map((text, index) => (
+          <ListItem  onClick={()=>handleClick(text)} button key={text}>
 
-          {['Add Premium Service', 'Make Admin'].map((text, index) => (
+            <ListItemIcon>{index%2==0 ? <PlusOneIcon/> : <PlusOneIcon/> }</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+          {['Make Admin','Manage'].map((text, index) => (
             <ListItem  onClick={()=>handleClick(text)}  button key={text}>
-              <ListItemIcon>{index%2==0 ? <PlusOneIcon/> : <PersonAddIcon/> }</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-          {['Manage'].map((text, index) => (
-            <ListItem  onClick={()=>handleClick(text)}  button key={text}>
-              <ListItemIcon><LineStyleIcon></LineStyleIcon></ListItemIcon>
+              <ListItemIcon>{index%2==0?<PersonAddIcon/>:<LineStyleIcon/>}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -234,7 +269,7 @@ function Manage(props) {
    {
     !admin && <List>
     
-    { ['Book', 'Booking List'].map((text, index) => (
+    { ['Book Now', 'Booking List'].map((text, index) => (
       <ListItem  onClick={()=>handleClick(text)}  button key={text}>
         <ListItemIcon>{index===0 % 2 === 0 ? <ShoppingCartIcon/> : <ViewListIcon/> }</ListItemIcon>
         <ListItemText primary={text} />
@@ -280,7 +315,7 @@ function Manage(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            {admin?adminHeaderText:userHeaderText}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -335,6 +370,9 @@ function Manage(props) {
         }
         {
          admin && addPremiumVisible && <AddPremiumService></AddPremiumService>
+        }
+        {
+           addBranchVisible && <AddBranch></AddBranch>
         }
         {
           admin && orderListVisible && <OrderList orderlist={list}></OrderList>

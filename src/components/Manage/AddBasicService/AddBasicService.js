@@ -25,6 +25,7 @@ const AddBasicService = () => {
                 document.getElementById('price').value='';
                 document.getElementById('validity').value='';
                 document.getElementById('image').value=null;
+                window.location.reload();
             }
             else{
                 alert('Error. Basic Service Could not be added');
@@ -49,7 +50,7 @@ const AddBasicService = () => {
         <section className="my-3">
         <section className="container-fluid row">
         <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
-            <h5 className="text-brand">Add a Service</h5>
+            <h5 className="text-brand">Add a Basic Service</h5>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Name</label>

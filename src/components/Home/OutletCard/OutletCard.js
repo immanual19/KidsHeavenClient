@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   });
   
 const OutletCard = (props) => {
-  const {name,address,image}=props.outlet;
+  const {name,location,imageURL}=props.branch;
     const classes = useStyles();
     return (
         <div className="my-2">
@@ -25,7 +25,7 @@ const OutletCard = (props) => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={image}
+          image={imageURL}
           title="Contemplative Reptile"
         />
         <CardContent>
@@ -33,7 +33,7 @@ const OutletCard = (props) => {
             {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {address}
+            {location}
           </Typography>
         </CardContent>
       </CardActionArea>

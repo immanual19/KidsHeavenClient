@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 import { useForm } from '../../../../node_modules/react-hook-form';
 import axios from 'axios';
-const Branches = () => {
+const AddBranch = () => {
     const { register, handleSubmit, errors } = useForm();
     const [imageURL, setIMageURL] = useState(null);
     const [isImageUploaded, setIsImageUploaded]=useState(false);
     const onSubmit = data =>{
-        const serviceInfo={...data};
-        serviceInfo.imageURL=imageURL;
-        console.log('Service infos are: ',serviceInfo);
+        const branchInfo={...data};
+        branchInfo.imageURL=imageURL;
+        console.log('Service infos are: ',branchInfo);
 
-        fetch('http://localhost:8080/addBasicService',{
+        fetch('http://localhost:8080/addABranch',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
             },
-            body: JSON.stringify(serviceInfo)
+            body: JSON.stringify(branchInfo)
         })
         .then(response=>response.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            if(data){
+                alert('Branch added successfully');
+                document.getElementById('name').value='';
+                document.getElementById('location').value='';
+                document.getElementById('image').value=null;
+                window.location.reload();
+            }
+            else{
+                alert('Branch could not be added');
+            }
+        })
     }
     const handleImageUpload=event=>{
     
@@ -38,26 +49,22 @@ const Branches = () => {
         <section className="my-3">
         <section className="container-fluid row">
         <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
-            <h5 className="text-brand">Add a Service</h5>
+            <h5 className="text-brand">Add a new Branch</h5>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Name</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Name" />
+                    <input id="name" ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Branch's Name" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Validity</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="validity" placeholder="Enter Validity" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Price</label>
-                    <input ref={register({ required: true })} type="text" className="form-control" name="price" placeholder="Enter Price" />
+                    <label htmlFor="exampleInputPassword1">Location</label>
+                    <input id="location" ref={register({ required: true })} type="text" className="form-control" name="location" placeholder="Enter Branch's Location" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Upload a image</label>
-                    <input onChange={handleImageUpload} type="file" className="form-control" id="exampleInputPassword1" placeholder="Picture" />
+                    <input onChange={handleImageUpload} type="file" className="form-control" id="image" placeholder="Picture" />
                 </div>
                 {
-                    isImageUploaded && <button type="submit" className="btn btn-primary">Submit</button>
+                    isImageUploaded?<button type="submit" className="btn btn-primary">Submit</button>:<button type="submit" className="btn btn-primary" disabled>Please Wait</button>
                 }
             </form>
         </div>
@@ -66,4 +73,4 @@ const Branches = () => {
     );
 };
 
-export default Branches;
+export default AddBranch;

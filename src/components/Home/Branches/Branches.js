@@ -22,12 +22,21 @@ const outlets=[
     }
 ]
 const Branches = () => {
+
+    const [branches,setBranches]=useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:8080/getAllBranches')
+        .then(res=>res.json())
+        .then(data=>setBranches(data))
+    },[])
+
     return (
         <div>
         <h1>Our Branches</h1>
         <section className="outlet-container">
         {
-            outlets.map(outlet=><OutletCard outlet={outlet}></OutletCard>)
+            branches.map(branch=><OutletCard branch={branch}></OutletCard>)
         }
         </section>
         </div>

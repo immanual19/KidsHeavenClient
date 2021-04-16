@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 const Navbar = () => {
+
+  const userInfo=JSON.parse(localStorage.getItem('userInfo'));
+
+  const handleLogOut=()=>{
+    localStorage.setItem('userInfo',JSON.stringify({}));
+    window.location.reload();
+  }
     return (
         <div>
         <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">KidsHeaven</a>
+        <Link to="/"><h3 style={{color:'goldenrod'}}>Kids Heaven</h3></Link>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -20,14 +27,18 @@ const Navbar = () => {
               <li class="nav-item">
                 <a class="nav-link" href="#">Services</a>
               </li>
+              <Link to="/manage"><li class="nav-item">
+              <a class="nav-link" href="#">DashBoard</a>
+            </li></Link>
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
               </li>
-              <Link to="/manage"><li class="nav-item">
-              <a class="nav-link" href="#">Admin</a>
-            </li></Link>
               
-              <Link to="login"><button type="button" class="btn btn-primary">Login</button></Link>
+              {
+                userInfo.isSignedIn? <button type="button" class="btn btn-primary" onClick={handleLogOut}>LogOut</button> : <Link to="/login"><button type="button" class="btn btn-primary">Login</button></Link>
+              }
+              
+              
             </ul>
           </div>
         </div>
