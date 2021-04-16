@@ -7,7 +7,7 @@ const Review = () => {
         fetch('http://localhost:8080/getReview')
         .then(response=>response.json())
         .then(data=>setReviews(data))
-    },[reviews])
+    },[])
     return (
         <div className="my-5">
         <h1>Testimonials</h1>

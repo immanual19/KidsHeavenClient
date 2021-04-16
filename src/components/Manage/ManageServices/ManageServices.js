@@ -1,0 +1,111 @@
+import React from 'react';
+import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+const StyledTableCell = withStyles((theme: Theme) =>
+  createStyles({
+    head: {
+      backgroundColor: theme.palette.common.black,
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+  }),
+)(TableCell);
+
+const StyledTableRow = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+      },
+    },
+  }),
+)(TableRow);
+
+
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 700,
+  },
+});
+
+export default function ManageServices() {
+  const classes = useStyles();
+  const basicServices=JSON.parse(localStorage.getItem('basicServices'));
+  const premiumServices=JSON.parse(localStorage.getItem('premiumServices'));
+
+  const handleClickBasic=(id)=>{
+      console.log(id);
+  }
+
+  const handleClickPremium=(id)=>{
+      console.log(id);
+  }
+  return (
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+        <h1>Basic Services</h1>
+          <TableRow>
+            <StyledTableCell>Service ID</StyledTableCell>
+            <StyledTableCell align="right">Service Name</StyledTableCell>
+            <StyledTableCell align="right">Validity</StyledTableCell>
+            <StyledTableCell align="right">Price</StyledTableCell>
+            <StyledTableCell align="right">Update/Delete</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {basicServices.map((service) => (
+            <StyledTableRow key={service._id}>
+              <StyledTableCell component="th" scope="row">
+                {service._id}
+              </StyledTableCell>
+              <StyledTableCell align="right">{service.name}</StyledTableCell>
+              <StyledTableCell align="right">{service.validity}</StyledTableCell>
+              <StyledTableCell align="right">${service.price}</StyledTableCell>
+              <StyledTableCell align="right"><EditIcon></EditIcon><DeleteIcon onClick={()=>handleClickBasic(service._id)}></DeleteIcon></StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+        <h1>Premium Services</h1>
+          <TableRow>
+            <StyledTableCell>Service ID</StyledTableCell>
+            <StyledTableCell align="right">Service Name</StyledTableCell>
+            <StyledTableCell align="right">Age Group</StyledTableCell>
+            <StyledTableCell align="right">Validity</StyledTableCell>
+            <StyledTableCell align="right">Price</StyledTableCell>
+            <StyledTableCell align="right">Update/Delete</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {premiumServices.map((service) => (
+            <StyledTableRow key={service._id}>
+              <StyledTableCell component="th" scope="row">
+                {service._id}
+              </StyledTableCell>
+              <StyledTableCell align="right">{service.name}</StyledTableCell>
+              <StyledTableCell align="right">{service.ageGroup}</StyledTableCell>
+              <StyledTableCell align="right">{service.validity}</StyledTableCell>
+              <StyledTableCell align="right">${service.price}</StyledTableCell>
+              <StyledTableCell align="right"><EditIcon></EditIcon><DeleteIcon onClick={()=>handleClickPremium(service._id)}></DeleteIcon></StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}

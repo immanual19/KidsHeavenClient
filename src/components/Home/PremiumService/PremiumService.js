@@ -8,7 +8,10 @@ const PremiumService = () => {
         fetch('http://localhost:8080/getPremiumService')
         .then(response=>response.json())
         .then(data=>setPremiumService(data))
-    },[premiumService])
+    },[])
+
+    localStorage.setItem('premiumServices',JSON.stringify(premiumService));
+
     return (
         <div className="my-5">
         <h1>Our Premium Services</h1>

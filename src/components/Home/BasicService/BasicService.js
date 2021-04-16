@@ -9,7 +9,9 @@ const BasicService = () => {
         fetch('http://localhost:8080/getBasicService')
         .then(response=>response.json())
         .then(data=>setBasicService(data))
-    },[basicService])
+    },[])
+
+    localStorage.setItem('basicServices',JSON.stringify(basicService));
     return (
         <div className="my-5">
         <h1>Our Basic Services</h1>

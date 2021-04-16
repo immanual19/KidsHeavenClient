@@ -29,6 +29,8 @@ import Book from '../Book/Book';
 import OrderList from '../OrderList/OrderList';
 import PostReview from '../PostReview/PostReview';
 import BookingList from '../BookingList/BookingList';
+import LineStyleIcon from '@material-ui/icons/LineStyle';
+import ManageServices from '../ManageServices/ManageServices';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -122,6 +124,7 @@ function Manage(props) {
   const [makeAdminVisible,setMakeAdminVisible]=useState(false);
   const [addBasicVisible,setAddBasicVisible]=useState(false);
   const [addPremiumVisible,setAddPremiumVisible]=useState(false);
+  const [manageAllVisible,setManageAllVisible]=useState(false);
   //Ends Here
   const handleClick=(text)=>{
       console.log('Clicked',text);
@@ -130,18 +133,21 @@ function Manage(props) {
           setOrderListVisible(false);
           setAddBasicVisible(false);
           setAddPremiumVisible(false);
+          setManageAllVisible(false);
       }
       else if(text==='Add Basic Service'){
         setAddBasicVisible(true);
         setMakeAdminVisible(false);
         setOrderListVisible(false);
         setAddPremiumVisible(false);
+        setManageAllVisible(false);
       }
       else if(text==='Add Premium Service'){
         setAddPremiumVisible(true);
         setAddBasicVisible(false);
         setMakeAdminVisible(false);
         setOrderListVisible(false);
+        setManageAllVisible(false);
         
       }
       else if(text==='Order list'){
@@ -149,6 +155,7 @@ function Manage(props) {
         setAddPremiumVisible(false);
         setAddBasicVisible(false);
         setMakeAdminVisible(false);
+        setManageAllVisible(false);
         
       }
       else if(text==='Book'){
@@ -166,6 +173,13 @@ function Manage(props) {
         setBookingListVisible(false);
         setBookingVisible(false);
       }
+      else if(text=='Manage'){
+        setManageAllVisible(true);
+        setOrderListVisible(false);
+        setAddPremiumVisible(false);
+        setAddBasicVisible(false);
+        setMakeAdminVisible(false);
+      }
   }
 
   const [list,setList]=useState([]);
@@ -177,9 +191,6 @@ function Manage(props) {
       setList(data);
     })
   },[])
-
-
-
 
 
   const handleDrawerToggle = () => {
@@ -208,6 +219,12 @@ function Manage(props) {
           {['Add Premium Service', 'Make Admin'].map((text, index) => (
             <ListItem  onClick={()=>handleClick(text)}  button key={text}>
               <ListItemIcon>{index%2==0 ? <PlusOneIcon/> : <PersonAddIcon/> }</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+          {['Manage'].map((text, index) => (
+            <ListItem  onClick={()=>handleClick(text)}  button key={text}>
+              <ListItemIcon><LineStyleIcon></LineStyleIcon></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -312,6 +329,9 @@ function Manage(props) {
         }
         {
            admin && addBasicVisible && <AddBasicService></AddBasicService>
+        }
+        {
+          admin && manageAllVisible && <ManageServices></ManageServices>
         }
         {
          admin && addPremiumVisible && <AddPremiumService></AddPremiumService>
