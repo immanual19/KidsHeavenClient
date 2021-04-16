@@ -95,6 +95,18 @@ function Manage(props) {
     })
   },[admin])
 
+  const [myBookings,setMyBookings]=useState([]);
+
+  useEffect(()=>{
+    fetch('http://localhost:8080/myOrder',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email})
+    })
+    .then(res=>res.json())
+    .then(data=>setMyBookings(data))
+  },[])
+
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -166,9 +178,15 @@ function Manage(props) {
     })
   },[])
 
+
+
+
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+
 
   const drawer = (
     <div>
@@ -287,22 +305,22 @@ function Manage(props) {
           !admin &&  bookingVisible && <Book serviceId={serviceId}></Book>
         }
         {
-          bookingListVisible && <BookingList></BookingList>
+            !admin && bookingListVisible && <BookingList myBookings={myBookings} key={myBookings._id}></BookingList>
         }
         {
-           makeAdminVisible && <MakeAdmin></MakeAdmin>
+           admin && makeAdminVisible && <MakeAdmin></MakeAdmin>
         }
         {
-            addBasicVisible && <AddBasicService></AddBasicService>
+           admin && addBasicVisible && <AddBasicService></AddBasicService>
         }
         {
-          addPremiumVisible && <AddPremiumService></AddPremiumService>
+         admin && addPremiumVisible && <AddPremiumService></AddPremiumService>
         }
         {
           admin && orderListVisible && <OrderList orderlist={list}></OrderList>
         }
         {
-          reviewVisible && <PostReview></PostReview>
+          !admin && reviewVisible && <PostReview></PostReview>
         }
         </div>
       </main>

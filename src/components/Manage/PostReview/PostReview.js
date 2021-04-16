@@ -23,7 +23,7 @@ const PostReview = () => {
         <section className="my-3">
         <section className="container-fluid row">
         <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
-            <h5 className="text-brand">Add a Branch</h5>
+            <h5 className="text-brand">Write a beautiful Review</h5>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Name</label>
@@ -34,6 +34,7 @@ const PostReview = () => {
                     <input ref={register({ required: true })} type="text" className="form-control" name="rating" placeholder="Rating" />
                 </div>
                 <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Short Description</label>
                 <textarea ref={register({ required: true })} type="text" className="form-control" name="description" placeholder="Description" >
                 </textarea>
                 </div>

@@ -4,7 +4,7 @@ import './Review.css';
 const Review = () => {
     const [reviews,setReviews]=useState([]);
     useEffect(()=>{
-        fetch('https://tranquil-citadel-82136.herokuapp.com/getReview')
+        fetch('http://localhost:8080/getReview')
         .then(response=>response.json())
         .then(data=>setReviews(data))
     },[reviews])

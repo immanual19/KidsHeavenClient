@@ -1,9 +1,13 @@
 import React from 'react';
-
-const BookingList = () => {
+import BookingListCard from './BookingListCard';
+import './BokingList.css';
+const BookingList = ({myBookings}) => {
+    console.log("From BookingList: ",myBookings);
     return (
-        <div>
-            <h1>Booking List of user</h1>
+        <div className="my-booking-list-cotainer">
+            {
+                myBookings.map(booking=><BookingListCard booking={booking} key={booking._id}></BookingListCard>)
+            }
         </div>
     );
 };

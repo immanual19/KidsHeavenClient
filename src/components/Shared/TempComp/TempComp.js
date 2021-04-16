@@ -10,7 +10,7 @@ const Branches = () => {
         serviceInfo.imageURL=imageURL;
         console.log('Service infos are: ',serviceInfo);
 
-        fetch('https://tranquil-citadel-82136.herokuapp.com/addBasicService',{
+        fetch('http://localhost:8080/addBasicService',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
