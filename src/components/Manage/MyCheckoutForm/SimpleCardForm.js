@@ -66,7 +66,7 @@ const SimpleCardForm = () => {
         paymentInfo.date=new Date().toDateString();
         localStorage.setItem('paymentInfo',JSON.stringify(paymentInfo));
 
-        fetch('http://localhost:8080/postPaymentInfo',{
+        fetch('https://tranquil-citadel-82136.herokuapp.com/postPaymentInfo',{
             method: 'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify(paymentInfo)

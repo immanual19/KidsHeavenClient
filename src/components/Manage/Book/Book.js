@@ -9,7 +9,7 @@ const Book = (props) => {
     const [singleService,setSingleService]=useState([]);
     const userInfo=JSON.parse(localStorage.getItem('userInfo'));
     useEffect(()=>{
-        fetch('http://localhost:8080/getFromAllServices',{
+        fetch('https://tranquil-citadel-82136.herokuapp.com/getFromAllServices',{
             method: 'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({id})

@@ -26,7 +26,7 @@ const Branches = () => {
     const [branches,setBranches]=useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/getAllBranches')
+        fetch('https://tranquil-citadel-82136.herokuapp.com/getAllBranches')
         .then(res=>res.json())
         .then(data=>setBranches(data))
     },[])

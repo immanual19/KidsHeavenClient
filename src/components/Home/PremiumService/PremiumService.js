@@ -5,7 +5,7 @@ const PremiumService = () => {
     const [premiumService,setPremiumService]=useState([]);
 
     useEffect(()=>{
-        fetch('http://localhost:8080/getPremiumService')
+        fetch('https://tranquil-citadel-82136.herokuapp.com/getPremiumService')
         .then(response=>response.json())
         .then(data=>setPremiumService(data))
     },[])

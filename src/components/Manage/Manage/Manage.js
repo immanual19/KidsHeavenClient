@@ -86,7 +86,7 @@ function Manage(props) {
   const [admin,isAdmin]=useState(false);
 
   useEffect(()=>{
-    fetch('http://localhost:8080/isAdmin',{
+    fetch('https://tranquil-citadel-82136.herokuapp.com/isAdmin',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({email})
@@ -102,7 +102,7 @@ function Manage(props) {
   const [myBookings,setMyBookings]=useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:8080/myOrder',{
+    fetch('https://tranquil-citadel-82136.herokuapp.com/myOrder',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({email})
@@ -218,7 +218,7 @@ function Manage(props) {
   const [list,setList]=useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:8080/getAllOrder')
+    fetch('https://tranquil-citadel-82136.herokuapp.com/getAllOrder')
     .then(res=>res.json())
     .then(data=>{
       setList(data);

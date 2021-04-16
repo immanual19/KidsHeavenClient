@@ -5,7 +5,7 @@ const MakeAdmin = () => {
 
     const onSubmit=data=>{
         const email=data.email;
-                fetch('http://localhost:8080/makeAdmin',{
+                fetch('https://tranquil-citadel-82136.herokuapp.com/makeAdmin',{
                     method:'POST',
                     headers:{'Content-Type':'application/json'},
                     body:JSON.stringify(data)

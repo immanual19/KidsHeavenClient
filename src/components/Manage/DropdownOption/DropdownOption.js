@@ -47,7 +47,7 @@ export default function DropdownOption({list}) {
       const modifiedPart={id:_id,status:status};
       console.log(modifiedPart);
 
-      fetch('http://localhost:8080/updateOrderStatus',{
+      fetch('https://tranquil-citadel-82136.herokuapp.com/updateOrderStatus',{
           method:'PATCH',
           headers:{'Content-Type':'application/json'},
           body: JSON.stringify(modifiedPart)

@@ -10,7 +10,7 @@ const PostReview = () => {
         reviewInfo.userImage=userInfo.photo;
         reviewInfo.email=userInfo.email;
         console.log(reviewInfo);
-        fetch('http://localhost:8080/postReview',{
+        fetch('https://tranquil-citadel-82136.herokuapp.com/postReview',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify(reviewInfo)

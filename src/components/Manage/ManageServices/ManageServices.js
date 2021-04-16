@@ -48,19 +48,19 @@ export default function ManageServices() {
   const [premiumServices,setPremiumServices]=useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:8080/getBasicService')
+    fetch('https://tranquil-citadel-82136.herokuapp.com/getBasicService')
     .then(res=>res.json())
     .then(data=>setBasicServices(data))
   },[])
 
   useEffect(()=>{
-    fetch('http://localhost:8080/getPremiumService')
+    fetch('https://tranquil-citadel-82136.herokuapp.com/getPremiumService')
     .then(res=>res.json())
     .then(data=>setPremiumServices(data))
   },[])
 
   const handleClickBasic=(id)=>{
-      fetch('http://localhost:8080/deleteBasicService',{
+      fetch('https://tranquil-citadel-82136.herokuapp.com/deleteBasicService',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify({id})
@@ -78,7 +78,7 @@ export default function ManageServices() {
   }
 
   const handleClickPremium=(id)=>{
-      fetch('http://localhost:8080/deletePremiumService',{
+      fetch('https://tranquil-citadel-82136.herokuapp.com/deletePremiumService',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify({id})

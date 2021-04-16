@@ -10,7 +10,7 @@ const AddPremiumService = () => {
         serviceInfo.imageURL=imageURL;
         console.log('Service infos are: ',serviceInfo);
 
-        fetch('http://localhost:8080/addService',{
+        fetch('https://tranquil-citadel-82136.herokuapp.com/addService',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

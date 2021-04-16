@@ -10,7 +10,7 @@ const AddBranch = () => {
         branchInfo.imageURL=imageURL;
         console.log('Service infos are: ',branchInfo);
 
-        fetch('http://localhost:8080/addABranch',{
+        fetch('https://tranquil-citadel-82136.herokuapp.com/addABranch',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
