@@ -6,6 +6,7 @@ const Navbar = () => {
 
   const handleLogOut=()=>{
     localStorage.setItem('userInfo',JSON.stringify({}));
+    localStorage.setItem('paymentInfo',JSON.stringify({}));
     window.location.reload();
   }
     return (
