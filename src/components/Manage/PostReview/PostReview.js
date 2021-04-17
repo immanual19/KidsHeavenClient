@@ -32,7 +32,7 @@ const PostReview = () => {
     return (
         <section className="my-3">
         <section className="container-fluid row">
-        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
+        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "lightGray" }}>
             <h5 className="text-brand">Write a beautiful Review</h5>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
