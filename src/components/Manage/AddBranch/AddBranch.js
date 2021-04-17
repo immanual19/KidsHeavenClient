@@ -48,19 +48,17 @@ const AddBranch = () => {
     return (
         <section className="my-3">
         <section className="container-fluid row">
-        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
+        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "lightGray" }}>
             <h5 className="text-brand">Add a new Branch</h5>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Name</label>
-                    <input id="name" ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Branch's Name" />
+                    <input id="name" ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Branch's Name (Ex: Heaven's Gate)" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Location</label>
-                    <input id="location" ref={register({ required: true })} type="text" className="form-control" name="location" placeholder="Enter Branch's Location" />
+                    <input id="location" ref={register({ required: true })} type="text" className="form-control" name="location" placeholder="Enter Branch's Location (Ex: Dhaka, Bangladesh)" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Upload a image</label>
+                    <label htmlFor="image">Upload a image</label>
                     <input onChange={handleImageUpload} type="file" className="form-control" id="image" placeholder="Picture" />
                 </div>
                 {

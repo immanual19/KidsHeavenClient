@@ -5,11 +5,22 @@ const BookingListCard = ({booking}) => {
 
     const {userName,serviceName,servicePrice,serviceStatus,date}=booking;
     console.log(userName,serviceName,servicePrice,serviceStatus,date);
+    let color;
+    if(serviceStatus==='On Going'){
+        color='secondary';
+    }
+    else if(serviceStatus==='Done'){
+        color='primary';
+    }
+    else{
+        color='lightGray';
+    }
+
     return (
         <section class="card text-center" style={{width: '18rem'}}>
         <div class="card-body">
         <div className="d-flex justify-content-end">
-        <Button variant="contained" color="primary">{serviceStatus}</Button>
+        <Button variant="contained" color={color}>{serviceStatus}</Button>
         </div>
         <div style={{marginTop:'10px'}}>
         <h4 class="card-title">{serviceName}</h4>

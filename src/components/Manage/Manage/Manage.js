@@ -234,7 +234,7 @@ function Manage(props) {
 
   const drawer = (
     <div>
-    <Link to="/"><h3 style={{color:'goldenrod'}}>Kids Heaven</h3></Link>
+    <Link to="/"><h3>Kids Heaven</h3></Link>
       <div className={classes.toolbar} />
       
       <Divider />

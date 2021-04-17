@@ -20,11 +20,11 @@ const MakeAdmin = () => {
         
     }
     return (
-        <div>
+        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "lightGray" }}>
             <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Enter New Admin's Email:</label>
-                    <input ref={register({ required: true })} id="email-field" type="email" className="form-control" name="email" placeholder="Enter Name" />
+                    <input ref={register({ required: true })} id="email-field" type="email" className="form-control" name="email" placeholder="Enter Email" />
                     <button type="submit" className="btn btn-primary">Make Admin</button>
                 </div>
             </form>

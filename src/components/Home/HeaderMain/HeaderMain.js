@@ -1,10 +1,10 @@
 import React from 'react';
-import kidReading from '../../../images/kidReading.jpeg';
-import kidPlaying from '../../../images/kidPlaying.jpeg';
-import kidDrawing from '../../../images/kidDrawing.jpeg';
+import kidReading from '../../../images/slideImage/kidReading.jpeg';
+import kidPlaying from '../../../images/slideImage/kidPlaying.jpeg';
+import kidDrawing from '../../../images/slideImage/kidDrawing.jpeg';
 const HeaderMain = () => {
     return (
-        <section className="my-3">
+        <section className="py-3">
         <div style={{margin:'0 auto'}} id="carouselExampleCaptions" class="carousel slide w-75" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

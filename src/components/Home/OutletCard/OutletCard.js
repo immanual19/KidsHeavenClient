@@ -20,7 +20,7 @@ const OutletCard = (props) => {
   const {name,location,imageURL}=props.branch;
     const classes = useStyles();
     return (
-        <div className="my-2">
+        <div>
         <Card className={classes.root}>
       <CardActionArea>
         <CardMedia

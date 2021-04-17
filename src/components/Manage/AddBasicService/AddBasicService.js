@@ -49,23 +49,20 @@ const AddBasicService = () => {
     return (
         <section className="my-3">
         <section className="container-fluid row">
-        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
+        <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "lightGray" }}>
             <h5 className="text-brand">Add a Basic Service</h5>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Name</label>
-                    <input id="name" ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter Name" />
+                    <input id="name" ref={register({ required: true })} type="text" className="form-control" name="name" placeholder="Enter a service name (Ex: Day Care - Silicon)" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Validity</label>
-                    <input id="validity" ref={register({ required: true })} type="text" className="form-control" name="validity" placeholder="Enter Validity" />
+                    <input id="validity" ref={register({ required: true })} type="text" className="form-control" name="validity" placeholder="Enter validity (Ex: 12 weeks)" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Price</label>
-                    <input id="price" ref={register({ required: true })} type="text" className="form-control" name="price" placeholder="Enter Price" />
+                    <input id="price" ref={register({ required: true })} type="text" className="form-control" name="price" placeholder="Enter price (Ex: 5)" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Upload a image</label>
+                    <label htmlFor="image">Upload a image</label>
                     <input id="image" onChange={handleImageUpload} type="file" className="form-control" placeholder="Picture" />
                 </div>
                 {

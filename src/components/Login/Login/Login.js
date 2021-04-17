@@ -69,11 +69,13 @@ const Login = () => {
             })
     }
     return (
+        
         <div className="login-page">
         <h1>Welcome to KidsHeaven</h1>
         <p>Login is now More simple than ever</p>
         <p onClick={handleGoogleSignIn} className="SignInWithGoogle"><FontAwesomeIcon icon={faGoogle} /> Sign in with Google</p>
         </div>
+ 
     );
 };
 

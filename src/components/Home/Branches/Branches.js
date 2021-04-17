@@ -13,7 +13,7 @@ const Branches = () => {
     },[])
 
     return (
-        <div>
+        <div className="py-3">
         <h1>Our Branches</h1>
         <p>Explore all our branches in your preferred location.</p>
         <section className="outlet-container">
