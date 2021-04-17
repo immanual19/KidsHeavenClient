@@ -1,6 +1,6 @@
 # Introduction
 
-1. This project is called KidsHeaven.
+1. This project is called Kids Heaven.
 2. It can be referred as the most simplest form of a Day care center for kids with impressive facilities.
 3. Admin/User must login with his/her google account.
 4. I (A. Immanual Sarker) own everything of this website except the photos.
@@ -17,7 +17,7 @@
 
 1. Admin can add a basic service.
 2. Admin can add a premium service.
-3. Admin can add a new branch of KidsHeaven.
+3. Admin can add a new branch of Kids Heaven.
 4. Admin can delete a service.
 5. Admin can edit a service (Not functional yet).
 6. Admin can change the order status of any order.
