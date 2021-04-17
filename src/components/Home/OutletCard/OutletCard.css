@@ -1,6 +1,5 @@
 .outlet-card{
-
-    
+  margin: 5%;
   transition: transform .2s; /* Animation */
 
 }
