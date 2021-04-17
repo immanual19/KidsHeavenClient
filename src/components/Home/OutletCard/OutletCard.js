@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import './OutletCard.css';
 const useStyles = makeStyles({
     root: {
       maxWidth: 345,
@@ -20,7 +21,7 @@ const OutletCard = (props) => {
   const {name,location,imageURL}=props.branch;
     const classes = useStyles();
     return (
-        <div>
+        <div className="outlet-card">
         <Card className={classes.root}>
       <CardActionArea>
         <CardMedia

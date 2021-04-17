@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import './PremiumServiceCard.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,7 +27,7 @@ const PremiumServiceCard = (props) => {
     const {ageGroup,imageURL,name,price,validity,_id}=props.service;
     return (
        
-        <div>
+        <div className="premium-service-card">
         <Card className={classes.root}>
         <CardActionArea>
           <CardMedia

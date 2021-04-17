@@ -16,6 +16,7 @@ const BasicService = () => {
         <div className="my-5">
         <h1>Our Basic Services</h1>
         <p>Basic services includes taking care of your kid and ensuring your kid's safety only.</p>
+        <br/><br/>
         <section className="basic-service-container">
         {
             basicService.map(service=><BasicServiceCard key={service._id} service={service}></BasicServiceCard>)

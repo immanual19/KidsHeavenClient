@@ -1,0 +1,10 @@
+.premium-service-card{
+
+    
+    transition: transform .2s; /* Animation */
+  
+  }
+  .premium-service-card:hover{
+      
+      transform: scale(1.2);
+  }

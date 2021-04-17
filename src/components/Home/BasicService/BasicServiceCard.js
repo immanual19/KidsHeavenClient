@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import './BasicServiceCard.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,7 +26,7 @@ const BasicServiceCard = (props) => {
     const classes = useStyles();
     const {imageURL,name,price,validity,_id}=props.service;
     return (
-        <div className="my-2">
+        <div className="my-2 basic-service-card">
         <Card className={classes.root}>
         <CardActionArea>
           <CardMedia

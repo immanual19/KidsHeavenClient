@@ -16,6 +16,7 @@ const Branches = () => {
         <div className="py-3">
         <h1>Our Branches</h1>
         <p>Explore all our branches in your preferred location.</p>
+        <br/><br/>
         <section className="outlet-container">
         {
             branches.map(branch=><OutletCard branch={branch}></OutletCard>)
