@@ -36,16 +36,16 @@ const PremiumServiceCard = (props) => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {name}
+              Name: {name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {ageGroup}
+              Age Group: {ageGroup}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {price}
+              Price: ${price}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {validity}
+              Validity: {validity}
             </Typography>
           </CardContent>
         </CardActionArea>

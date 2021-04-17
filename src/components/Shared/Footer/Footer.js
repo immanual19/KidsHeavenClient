@@ -30,7 +30,7 @@ const Footer = () => {
                         <p>Kids Heaven can be the best possible solution for working mother and father.</p>
                         <h6>Call Now: +8801709605706</h6>
                     </div>
-                    <div style={{marginTop:'5%'}} class="col item social"> <FacebookIcon></FacebookIcon> <TwitterIcon></TwitterIcon> <YouTubeIcon></YouTubeIcon> </div>
+                    <div style={{marginTop:'5%'}} class="col item social"> <a href="//www.facebook.com" target="_blank"><FacebookIcon/></a> <a href="//www.twitter.com" target="_blank"><TwitterIcon/></a> <a href="//www.youtube.com" target="_blank"> <YouTubeIcon/> </a> </div>
                 </div>
                 <p>Copyright {(new Date()).getFullYear()} All Rights Reserved</p>
             </div>

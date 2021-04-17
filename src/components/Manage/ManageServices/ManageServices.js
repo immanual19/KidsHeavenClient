@@ -116,7 +116,7 @@ export default function ManageServices() {
               <StyledTableCell align="right">{service.name}</StyledTableCell>
               <StyledTableCell align="right">{service.validity}</StyledTableCell>
               <StyledTableCell align="right">${service.price}</StyledTableCell>
-              <StyledTableCell align="right"><EditIcon></EditIcon><DeleteIcon onClick={()=>handleClickBasic(service._id)}></DeleteIcon></StyledTableCell>
+              <StyledTableCell align="right"><EditIcon style={{cursor: 'not-allowed'}}></EditIcon><DeleteIcon style={{cursor:'pointer'}} onClick={()=>handleClickBasic(service._id)}></DeleteIcon></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
@@ -144,7 +144,7 @@ export default function ManageServices() {
               <StyledTableCell align="right">{service.ageGroup}</StyledTableCell>
               <StyledTableCell align="right">{service.validity}</StyledTableCell>
               <StyledTableCell align="right">${service.price}</StyledTableCell>
-              <StyledTableCell align="right"><EditIcon></EditIcon><DeleteIcon onClick={()=>handleClickPremium(service._id)}></DeleteIcon></StyledTableCell>
+              <StyledTableCell align="right"><EditIcon style={{cursor: 'not-allowed'}}></EditIcon><DeleteIcon style={{cursor:'pointer'}} onClick={()=>handleClickPremium(service._id)}></DeleteIcon></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

@@ -20,7 +20,6 @@ const useStyles = makeStyles({
 
 export default function OrderList({orderlist}) {
   const classes = useStyles();
-
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">

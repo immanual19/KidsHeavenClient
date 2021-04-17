@@ -30,10 +30,10 @@ const OutletCard = (props) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {name}
+            Name: {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {location}
+            Location: {location}
           </Typography>
         </CardContent>
       </CardActionArea>

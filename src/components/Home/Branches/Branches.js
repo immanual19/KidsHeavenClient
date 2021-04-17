@@ -15,6 +15,7 @@ const Branches = () => {
     return (
         <div>
         <h1>Our Branches</h1>
+        <p>Explore all our branches in your preferred location.</p>
         <section className="outlet-container">
         {
             branches.map(branch=><OutletCard branch={branch}></OutletCard>)

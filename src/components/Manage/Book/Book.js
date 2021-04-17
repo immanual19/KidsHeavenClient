@@ -47,7 +47,7 @@ const Book = (props) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="serviceName">Price</label>
-                    <input type="text" className="form-control" name="servicePrice" placeholder="Service Price" value={singleService.price} readOnly/>
+                    <input type="text" className="form-control" name="servicePrice" placeholder="Service Price" value={'$'+singleService.price} readOnly/>
                 </div>
             </form>
             <ProcessPayment></ProcessPayment>

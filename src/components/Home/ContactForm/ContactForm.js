@@ -4,7 +4,7 @@ const ContactForm = () => {
     return (
         <div class="contact-form-container">
         <h1>Contact Us</h1>
-        <p>Let us help you to be familiar with KidsHeaven</p>
+        <p>Write us in details</p>
         <form>
           <label for="fname">First Name</label>
           <input type="text" id="fname" name="firstname" placeholder="Your name.."/>
