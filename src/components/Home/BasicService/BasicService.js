@@ -14,8 +14,11 @@ const BasicService = () => {
 
     return (
         <div className="my-5">
+        <div style={{margin:'0 auto'}} className="w-75">
         <h1>Our Basic Services</h1>
         <p>Basic services includes taking care of your kid and ensuring your kid's safety only.</p>
+        </div>
+        
         <br/><br/>
         <section className="basic-service-container">
         {

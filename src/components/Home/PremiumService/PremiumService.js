@@ -14,8 +14,11 @@ const PremiumService = () => {
 
     return (
         <div className="my-5">
+        <div style={{margin:'0 auto'}} className="w-75">
         <h1>Our Premium Services</h1>
         <p>Here comes the best part. Premium services includes everything your kid needs (ex. education, sports etc) and the basic services are also included.</p>
+        </div>
+        
         <br/><br/>
         <section className="premium-service-container">
         {

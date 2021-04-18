@@ -10,7 +10,7 @@ const Navbar = () => {
     window.location.reload();
   }
     return (
-        <div>
+        <div className="w-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
         <Link to="/"><h3 className="text-white">Kids Heaven</h3></Link>

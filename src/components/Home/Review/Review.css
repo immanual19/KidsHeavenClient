@@ -1,13 +1,13 @@
 .review-card-container{
     display: grid;
-    margin-left: 5%;
+    grid-gap: 10px;
     grid-template-columns: repeat(3,1fr);
 }
 
 @media screen and (max-width:760px) {
     .review-card-container{
         display: grid;
-        margin-left: 16%;
+        grid-gap: 10px;
         grid-template-columns: repeat(1,1fr);
     }
 }

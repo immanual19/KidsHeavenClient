@@ -1,10 +1,10 @@
 .basic-service-card{
 
-    
+    margin: 0 auto;
     transition: transform .2s; /* Animation */
   
   }
   .basic-service-card:hover{
-      margin: 5%;
+      margin: 0 auto;
       transform: scale(1.2);
   }

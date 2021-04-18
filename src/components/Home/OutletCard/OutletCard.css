@@ -1,8 +1,9 @@
 .outlet-card{
-  margin: 5%;
+  margin: 0 auto;
   transition: transform .2s; /* Animation */
 
 }
 .outlet-card:hover{
+    margin: 0 auto;
     transform: scale(1.2);
 }

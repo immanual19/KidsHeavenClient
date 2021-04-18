@@ -14,8 +14,10 @@ const Branches = () => {
 
     return (
         <div className="py-3">
+        <div style={{margin:'0 auto'}} className="w-75">
         <h1>Our Branches</h1>
         <p>Explore all our branches in your preferred location.</p>
+        </div>
         <br/><br/>
         <section className="outlet-container">
         {

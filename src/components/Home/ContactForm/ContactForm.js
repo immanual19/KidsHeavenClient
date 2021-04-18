@@ -3,8 +3,11 @@ import './ContactForm.css';
 const ContactForm = () => {
     return (
         <div class="contact-form-container">
+        <div style={{margin:'0 auto'}} className="w-75">
         <h1>Contact Us</h1>
         <p>Write us in details. Kids Heaven values every single feedback. Help us to take a better care of your child.</p>
+        </div>
+        
         <form>
           
           <input type="text" id="fname" name="firstname" placeholder="Your first name.."/>

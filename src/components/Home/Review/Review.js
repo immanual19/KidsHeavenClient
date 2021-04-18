@@ -10,8 +10,11 @@ const Review = () => {
     },[])
     return (
         <div className="my-5">
+        <div style={{margin:'0 auto'}} className="w-75">
         <h1>Testimonials</h1>
         <p>Let's see what our honourable customers say about us.</p>
+        </div>
+       
         <section className="review-card-container">
             {
                 reviews.map(review=><ReviewCard key={review._id} review={review}></ReviewCard>)
