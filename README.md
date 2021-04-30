@@ -48,4 +48,4 @@
 
 #Home
 
-<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://raw.githubusercontent.com/immanual19/KidsHeavenClient/main/src/ScreenShot/home.png" width="200" height="400" />
+![Alt text](https://raw.githubusercontent.com/immanual19/KidsHeavenClient/main/src/ScreenShot/home.png "Optional title")
